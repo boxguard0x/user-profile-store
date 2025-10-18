@@ -1,0 +1,1 @@
+pub const USER_PROFILE_SEED: &[u8] = b"user-profile";
