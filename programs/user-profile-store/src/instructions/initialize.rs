@@ -3,7 +3,7 @@ use anchor_lang::prelude::*;
 
 pub fn initialize_user(ctx: Context<Initialize>, data: UserData) -> Result<()> {
     require!(
-        data.age < 18 && !data.name.is_empty() && !data.bio.is_empty(),
+        data.age > 18 && !data.name.is_empty() && !data.bio.is_empty(),
         ProfileError::InvalidData
     );
     ctx.accounts.user_account.age = data.age;
