@@ -9,10 +9,12 @@ pub fn update_user(
 ) -> Result<()> {
     if let Some(name_value) = name {
         require!(!name_value.is_empty(), ProfileError::EmptyName);
+        require!(name_value.len() <= 50, ProfileError::NameTooLong);
         ctx.accounts.user_account.name = name_value;
     }
     if let Some(bio_value) = bio {
         require!(!bio_value.is_empty(), ProfileError::EmptyBio);
+        require!(bio_value.len() <= 50, ProfileError::BioTooLong);
         ctx.accounts.user_account.bio = bio_value;
     }
 
